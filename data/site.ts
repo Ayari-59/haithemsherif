@@ -6,9 +6,9 @@ export const artist = {
   nameAr: "هيثم شريف",
   tagline: "Chanteur tunisien",
   taglineAr: "القناة الرسمية للفنان هيثم شريف",
-  bio: "Haithem Sherif est un chanteur tunisien, figure reconnue de la scène orientale parisienne. Initié tout jeune au chant soufi, il s'est nourri de la musique tunisienne et du tarab oriental, cet art du chant qui cherche l'émotion pure. De « Hiya » à son dernier single « Barcha Klam », il marie aujourd'hui cet héritage à une pop orientale moderne et romantique, sur scène comme en studio.",
+  bio: "Haithem Sherif est un chanteur tunisien, figure reconnue de la scène orientale parisienne. Initié tout jeune au chant soufi, nourri de musique tunisienne et de tarab oriental, il marie aujourd'hui cet héritage à une pop orientale moderne et romantique, sur scène comme en studio.",
   bioAr:
-    "هيثم شريف مغنٍّ تونسي، ومن الوجوه المعروفة على الساحة الفنية الباريسية. بدأ الغناء منذ صغره بالإنشاد الصوفي، ونهل من الموسيقى التونسية والطرب الشرقي الأصيل. ومن «هي» إلى أحدث أغانيه «برشى كلام»، يمزج اليوم هذا الإرث العريق بلمسة عصرية رومانسية، على الخشبة وفي الاستوديو.",
+    "هيثم شريف مغنٍّ تونسي، ومن الوجوه المعروفة على الساحة الفنية الباريسية. بدأ الغناء منذ صغره بالإنشاد الصوفي، ونهل من الموسيقى التونسية والطرب الشرقي الأصيل، فصقل صوته بين المقامات والحفلات. ويمزج اليوم هذا الإرث العريق بلمسة عصرية رومانسية، على الخشبة وفي الاستوديو، ليقدّم فنًّا يخاطب القلب قبل الأذن.",
   // Adresse e-mail de booking : laisser vide pour masquer la section e-mail.
   bookingEmail: "",
   // Numéro WhatsApp booking (format international) et message pré-rempli.
@@ -20,8 +20,7 @@ export const socials = [
   { label: "YouTube", url: "https://www.youtube.com/@haithemsherif4216" },
   { label: "Instagram", url: "https://www.instagram.com/haithem.sherif.officiel/" },
   { label: "TikTok", url: "https://www.tiktok.com/@haithemsherif1" },
-  // Ajouter Facebook ici quand le lien est connu :
-  // { label: "Facebook", url: "https://www.facebook.com/..." },
+  { label: "Facebook", url: "https://www.facebook.com/haithem.sherif.589" },
 ];
 
 export const platforms = [
