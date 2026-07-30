@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import { Cairo } from "next/font/google";
+import { Amiri, Cairo } from "next/font/google";
 import "./globals.css";
 
 const cairo = Cairo({
   subsets: ["latin", "arabic"],
   variable: "--font-cairo",
+});
+
+const amiri = Amiri({
+  subsets: ["arabic"],
+  weight: ["400", "700"],
+  variable: "--font-amiri",
 });
 
 export const metadata: Metadata = {
@@ -24,7 +30,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="fr">
-      <body className={`${cairo.variable} font-[family-name:var(--font-cairo)] antialiased`}>
+      <body className={`${cairo.variable} ${amiri.variable} font-[family-name:var(--font-cairo)] antialiased`}>
         {children}
       </body>
     </html>

@@ -15,7 +15,7 @@ export default function VideoCard({ id, title, titleAr, year }: Props) {
   const [playing, setPlaying] = useState(false);
 
   return (
-    <div className="group overflow-hidden rounded-xl border border-white/10 bg-night-soft">
+    <div className="group overflow-hidden rounded-xl border border-gold/25 bg-night-soft">
       <div className="relative aspect-video">
         {playing ? (
           <iframe
@@ -51,7 +51,7 @@ export default function VideoCard({ id, title, titleAr, year }: Props) {
       <div className="flex items-baseline justify-between gap-2 px-4 py-3">
         <div>
           <p className="font-semibold">{title}</p>
-          <p dir="rtl" className="text-sm text-white/60">{titleAr}</p>
+          <p dir="rtl" className="font-ar text-base leading-tight text-gold-light/70">{titleAr}</p>
         </div>
         <span className="text-sm text-gold">{year}</span>
       </div>

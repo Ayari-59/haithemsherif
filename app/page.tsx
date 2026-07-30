@@ -16,14 +16,51 @@ const navLinks = [
   { href: "#contact", label: "Contact" },
 ];
 
+// Séparateur ornemental : filet doré avec étoile à 8 branches au centre
+function Ornament() {
+  return (
+    <svg
+      viewBox="0 0 320 24"
+      className="mx-auto mt-4 h-6 w-64 text-gold"
+      fill="none"
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <line x1="8" y1="12" x2="126" y2="12" strokeOpacity="0.5" />
+      <line x1="194" y1="12" x2="312" y2="12" strokeOpacity="0.5" />
+      <circle cx="136" cy="12" r="2" fill="currentColor" stroke="none" />
+      <circle cx="184" cy="12" r="2" fill="currentColor" stroke="none" />
+      <rect x="152" y="4" width="16" height="16" transform="rotate(45 160 12)" strokeOpacity="0.9" />
+      <rect x="152" y="4" width="16" height="16" strokeOpacity="0.9" />
+    </svg>
+  );
+}
+
+// Titre de section bilingue français / arabe
+function SectionTitle({ fr, frGold, ar }: { fr: string; frGold: string; ar: string }) {
+  return (
+    <div className="mb-10 text-center">
+      <h2 className="text-3xl font-bold sm:text-4xl">
+        <span className="text-gold">{frGold}</span> {fr}
+      </h2>
+      <p dir="rtl" className="font-ar mt-1 text-xl text-gold-light/80">{ar}</p>
+      <Ornament />
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <main>
       {/* Navigation */}
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-night/80 backdrop-blur">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-          <a href="#" className="text-lg font-bold tracking-wide">
-            <span className="text-gold">Haithem</span> Sherif
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-gold/20 bg-night/80 backdrop-blur">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2">
+          <a href="#" className="flex items-center gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.png" alt="Logo Haithem Sherif" className="h-10 w-auto" />
+            <span className="text-lg font-bold tracking-[0.2em] uppercase">
+              <span className="text-gold">Haïthem</span> Sherif
+            </span>
           </a>
           <div className="hidden gap-6 text-sm sm:flex">
             {navLinks.map((l) => (
@@ -45,14 +82,23 @@ export default function Home() {
           className="object-cover object-top opacity-40"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-night/40 via-night/60 to-night" />
+        <div className="pattern-oriental absolute inset-0 opacity-40" />
         <div className="relative z-10 px-4 text-center">
-          <p dir="rtl" className="mb-3 text-2xl text-gold-light sm:text-3xl">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt=""
+            aria-hidden="true"
+            className="mx-auto mb-6 h-28 w-auto drop-shadow-[0_0_24px_rgba(217,164,65,0.35)] sm:h-36"
+          />
+          <p dir="rtl" className="font-ar mb-2 text-3xl text-gold-light sm:text-4xl">
             {artist.nameAr}
           </p>
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-7xl">
             {artist.name}
           </h1>
           <p className="mt-4 text-lg text-white/70">{artist.tagline}</p>
+          <Ornament />
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <a
               href="#musique"
@@ -64,7 +110,7 @@ export default function Home() {
               href={`https://www.youtube.com/watch?v=${featuredVideo.id}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-white/30 px-6 py-3 font-semibold text-white transition hover:border-gold hover:text-gold"
+              className="rounded-full border border-gold/40 px-6 py-3 font-semibold text-white transition hover:border-gold hover:text-gold"
             >
               Dernier clip : {featuredVideo.title}
             </a>
@@ -79,9 +125,7 @@ export default function Home() {
 
       {/* Vidéos */}
       <section id="videos" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-16">
-        <h2 className="mb-8 text-3xl font-bold">
-          <span className="text-gold">Clips</span> vidéo
-        </h2>
+        <SectionTitle frGold="Clips" fr="vidéo" ar="الكليبات" />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {videos.map((v) => (
             <VideoCard key={v.id} {...v} />
@@ -100,28 +144,24 @@ export default function Home() {
       </section>
 
       {/* Discographie */}
-      <section id="musique" className="scroll-mt-20 bg-night-soft py-16">
+      <section id="musique" className="pattern-oriental scroll-mt-20 bg-night-soft py-16">
         <div className="mx-auto max-w-6xl px-4">
-          <h2 className="mb-8 text-3xl font-bold">
-            <span className="text-gold">Discographie</span>
-          </h2>
+          <SectionTitle frGold="Discographie" fr="" ar="الألبومات" />
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             {releases.map((r) => (
-              <div key={r.title} className="group">
-                <div className="overflow-hidden rounded-xl border border-white/10">
+              <div key={r.title} className="group text-center">
+                <div className="arch overflow-hidden border border-gold/30 shadow-[0_0_30px_rgba(217,164,65,0.08)]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={r.cover}
                     alt={`${r.title} — pochette`}
-                    className="aspect-square w-full object-cover transition duration-300 group-hover:scale-105"
+                    className="aspect-[4/5] w-full object-cover object-top transition duration-300 group-hover:scale-105"
                   />
                 </div>
-                <div className="mt-3 flex items-baseline justify-between gap-2">
-                  <div>
-                    <p className="font-semibold">{r.title}</p>
-                    <p dir="rtl" className="text-sm text-white/60">{r.titleAr}</p>
-                  </div>
-                  <p className="shrink-0 text-sm text-gold">
+                <div className="mt-3">
+                  <p className="font-semibold">{r.title}</p>
+                  <p dir="rtl" className="font-ar text-lg leading-tight text-gold-light/80">{r.titleAr}</p>
+                  <p className="mt-1 text-sm text-gold">
                     {r.type} · {r.year}
                   </p>
                 </div>
@@ -133,9 +173,7 @@ export default function Home() {
 
       {/* Plateformes */}
       <section id="ecouter" className="mx-auto max-w-4xl scroll-mt-20 px-4 py-16 text-center">
-        <h2 className="mb-4 text-3xl font-bold">
-          <span className="text-gold">Écouter</span> partout
-        </h2>
+        <SectionTitle frGold="Écouter" fr="partout" ar="استمعوا" />
         <p className="mb-8 text-white/70">
           Retrouvez Haithem Sherif sur votre plateforme préférée.
         </p>
@@ -146,7 +184,7 @@ export default function Home() {
               href={p.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-white/20 px-6 py-3 font-semibold transition hover:border-gold hover:text-gold"
+              className="rounded-full border border-gold/30 px-6 py-3 font-semibold transition hover:border-gold hover:text-gold"
             >
               {p.label}
             </a>
@@ -155,11 +193,9 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="scroll-mt-20 bg-night-soft py-16">
+      <section id="contact" className="pattern-oriental scroll-mt-20 bg-night-soft py-16">
         <div className="mx-auto max-w-3xl px-4 text-center">
-          <h2 className="mb-4 text-3xl font-bold">
-            <span className="text-gold">Contact</span> &amp; booking
-          </h2>
+          <SectionTitle frGold="Contact" fr="& booking" ar="للتواصل والحجز" />
           <p className="mb-8 text-white/70">
             Pour une demande de concert, d&apos;événement privé ou de collaboration,
             contactez Haithem directement :
@@ -179,7 +215,7 @@ export default function Home() {
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-white/20 px-6 py-3 font-semibold transition hover:border-gold hover:text-gold"
+                className="rounded-full border border-gold/30 px-6 py-3 font-semibold transition hover:border-gold hover:text-gold"
               >
                 {s.label}
               </a>
@@ -189,8 +225,10 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 py-8 text-center text-sm text-white/50">
-        <p dir="rtl" className="mb-1">{artist.taglineAr}</p>
+      <footer className="border-t border-gold/20 py-10 text-center text-sm text-white/50">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/logo.png" alt="" aria-hidden="true" className="mx-auto mb-3 h-12 w-auto opacity-80" />
+        <p dir="rtl" className="font-ar mb-1 text-base">{artist.taglineAr}</p>
         <p>
           © {new Date().getFullYear()} {artist.name} — Tous droits réservés
         </p>
