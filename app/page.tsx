@@ -123,10 +123,10 @@ export default function Home() {
       <section id="artiste" className="mx-auto max-w-5xl scroll-mt-20 px-4 py-16">
         <SectionTitle frGold="L'artiste" fr="" ar="نبذة عن الفنان" />
         <div className="grid items-start gap-10 md:grid-cols-2 md:gap-12">
-          <p className="text-[17px] leading-relaxed text-white/80 md:border-r md:border-gold/20 md:pr-12 md:text-lg">
+          <p className="text-[17px] leading-[30px] text-white/80 md:border-r md:border-gold/20 md:pr-12 md:text-lg md:leading-[39px]">
             {artist.bio}
           </p>
-          <p dir="rtl" lang="ar" className="font-ar text-lg leading-relaxed text-white/85 md:text-2xl">
+          <p dir="rtl" lang="ar" className="font-ar text-lg leading-[30px] text-white/85 md:text-2xl md:leading-[39px]">
             {artist.bioAr}
           </p>
         </div>
