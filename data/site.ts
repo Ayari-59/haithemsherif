@@ -11,6 +11,9 @@ export const artist = {
     "هيثم شريف مغنٍّ تونسي، ومن الوجوه المعروفة على الساحة الفنية الباريسية. بدأ الغناء منذ صغره بالإنشاد الصوفي، ونهل من الموسيقى التونسية والطرب الشرقي الأصيل. ومن «هي» إلى أحدث أغانيه «برشى كلام»، يمزج اليوم هذا الإرث العريق بلمسة عصرية رومانسية، على الخشبة وفي الاستوديو.",
   // Adresse e-mail de booking : laisser vide pour masquer la section e-mail.
   bookingEmail: "",
+  // Numéro WhatsApp booking (format international) et message pré-rempli.
+  whatsapp: "+33 6 61 08 36 44",
+  whatsappMessage: "Bonjour Haithem, je vous contacte pour une demande de booking.",
 };
 
 export const socials = [
