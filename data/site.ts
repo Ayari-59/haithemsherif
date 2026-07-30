@@ -8,7 +8,7 @@ export const artist = {
   taglineAr: "القناة الرسمية للفنان هيثم شريف",
   bio: "Haithem Sherif est un chanteur tunisien, figure reconnue de la scène orientale parisienne. Initié tout jeune au chant soufi, formé à la musique tunisienne à la célèbre Rachidia de Tunis, il marie aujourd'hui cet héritage et le tarab oriental à une pop moderne et romantique, sur scène comme en studio.",
   bioAr:
-    "هيثم شريف مغنٍّ تونسي، ومن الوجوه المعروفة على الساحة الفنية الباريسية. بدأ الغناء منذ صغره بالإنشاد الصوفي، وتعلّم أصول الموسيقى التونسية في المعهد الرشيدي العريق، ونهل من الطرب الشرقي الأصيل. ويمزج اليوم هذا الإرث بلمسة عصرية رومانسية، على الخشبة وفي الاستوديو، ليقدّم فنًّا يخاطب القلب قبل الأذن.",
+    "هيثم شريف مغنٍّ تونسي، ومن الوجوه المعروفة على الساحة الفنية الباريسية. بدأ الغناء منذ صغره بالإنشاد الصوفي، وتتلمذ على أيدي عمالقة الموسيقى التونسية في المعهد الرشيدي العريق، ونهل من الطرب الشرقي الأصيل. ويمزج اليوم هذا الإرث بلمسة عصرية رومانسية، على الخشبة وفي الاستوديو، ليقدّم فنًّا يخاطب القلب قبل الأذن.",
   // Adresse e-mail de booking : laisser vide pour masquer la section e-mail.
   bookingEmail: "",
   // Numéro WhatsApp booking (format international) et message pré-rempli.
