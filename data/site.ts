@@ -6,7 +6,9 @@ export const artist = {
   nameAr: "هيثم شريف",
   tagline: "Chanteur tunisien",
   taglineAr: "القناة الرسمية للفنان هيثم شريف",
-  bio: "Haithem Sherif est un chanteur tunisien. Depuis 2021, il partage ses chansons romantiques en dialecte tunisien : de « Hiya » à son dernier single « Barcha Klam », son univers mêle pop orientale et émotion.",
+  bio: "Haithem Sherif est un chanteur tunisien, figure reconnue de la scène orientale parisienne. Initié tout jeune au chant soufi, il s'est nourri de la musique tunisienne et du tarab oriental, cet art du chant qui cherche l'émotion pure. De « Hiya » à son dernier single « Barcha Klam », il marie aujourd'hui cet héritage à une pop orientale moderne et romantique, sur scène comme en studio.",
+  bioAr:
+    "هيثم شريف مغنٍّ تونسي، ومن الوجوه المعروفة على الساحة الفنية الباريسية. بدأ الغناء منذ صغره بالإنشاد الصوفي، ونهل من الموسيقى التونسية والطرب الشرقي الأصيل. ومن «هي» إلى أحدث أغانيه «برشى كلام»، يمزج اليوم هذا الإرث العريق بلمسة عصرية رومانسية، على الخشبة وفي الاستوديو.",
   // Adresse e-mail de booking : laisser vide pour masquer la section e-mail.
   bookingEmail: "",
 };

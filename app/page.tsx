@@ -10,6 +10,7 @@ import {
 } from "@/data/site";
 
 const navLinks = [
+  { href: "#artiste", label: "L'artiste" },
   { href: "#videos", label: "Vidéos" },
   { href: "#musique", label: "Musique" },
   { href: "#ecouter", label: "Écouter" },
@@ -118,9 +119,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Bio */}
-      <section className="mx-auto max-w-3xl px-4 py-16 text-center">
-        <p className="text-lg leading-relaxed text-white/80">{artist.bio}</p>
+      {/* L'artiste — présentation bilingue */}
+      <section id="artiste" className="mx-auto max-w-5xl scroll-mt-20 px-4 py-16">
+        <SectionTitle frGold="L'artiste" fr="" ar="نبذة عن الفنان" />
+        <div className="grid items-start gap-10 md:grid-cols-2 md:gap-12">
+          <p className="text-lg leading-relaxed text-white/80 md:border-r md:border-gold/20 md:pr-12">
+            {artist.bio}
+          </p>
+          <p dir="rtl" lang="ar" className="font-ar text-xl leading-loose text-white/85">
+            {artist.bioAr}
+          </p>
+        </div>
       </section>
 
       {/* Vidéos */}
