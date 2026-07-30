@@ -6,9 +6,9 @@ export const artist = {
   nameAr: "هيثم شريف",
   tagline: "Chanteur tunisien",
   taglineAr: "القناة الرسمية للفنان هيثم شريف",
-  bio: "Haithem Sherif est un chanteur tunisien, figure reconnue de la scène orientale parisienne. Initié tout jeune au chant soufi, formé à la musique tunisienne à la célèbre Rachidia de Tunis, il marie aujourd'hui cet héritage et le tarab oriental à une pop moderne et romantique, sur scène comme en studio.",
+  bio: "Haithem Sherif est un chanteur tunisien, figure reconnue de la scène orientale parisienne. Initié tout jeune au chant soufi et formé à la célèbre Rachidia de Tunis, il participe à Super Star au Liban, où il est sélectionné dans l'équipe du compositeur Elias Rahbani. Il marie aujourd'hui cet héritage et le tarab oriental à une pop moderne et romantique, sur scène comme en studio.",
   bioAr:
-    "هيثم شريف مغنٍّ تونسي، ومن الوجوه المعروفة على الساحة الفنية الباريسية. بدأ الغناء منذ صغره بالإنشاد الصوفي، وتتلمذ على أيدي عمالقة الموسيقى التونسية في المعهد الرشيدي العريق، ونهل من الطرب الشرقي الأصيل. ويمزج اليوم هذا الإرث بلمسة عصرية رومانسية، على الخشبة وفي الاستوديو، ليقدّم فنًّا يخاطب القلب قبل الأذن.",
+    "هيثم شريف مغنٍّ تونسي، ومن الوجوه المعروفة على الساحة الفنية الباريسية. بدأ الغناء منذ صغره بالإنشاد الصوفي، وتتلمذ على أيدي عمالقة الموسيقى التونسية في المعهد الرشيدي العريق. شارك في برنامج «سوبر ستار» في لبنان، حيث وقع اختياره ضمن فريق الموسيقار الكبير إلياس الرحباني. ويمزج اليوم هذا الإرث والطرب الشرقي الأصيل بلمسة عصرية رومانسية، على الخشبة وفي الاستوديو، ليقدّم فنًّا راقيًا يخاطب القلب قبل الأذن، ويلامس وجدان جمهوره في باريس وسائر العواصم.",
   // Adresse e-mail de booking : laisser vide pour masquer la section e-mail.
   bookingEmail: "",
   // Numéro WhatsApp booking (format international) et message pré-rempli.
