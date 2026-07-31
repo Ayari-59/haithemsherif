@@ -15,19 +15,19 @@ import type { EventItem, LinkItem, VideoItem } from "@/lib/types";
 async function requireAdmin(): Promise<void> {
   const store = await cookies();
   const ok = await verifySessionToken(store.get(SESSION_COOKIE)?.value);
-  if (!ok) redirect("/admin/login");
+  if (!ok) redirect("/bardo/login");
 }
 
 function refresh(): void {
   revalidatePath("/");
-  revalidatePath("/admin");
+  revalidatePath("/bardo");
 }
 
 // --- Session ---
 
 export async function loginAction(formData: FormData): Promise<void> {
   const password = String(formData.get("password") ?? "");
-  if (!checkPassword(password)) redirect("/admin/login?error=1");
+  if (!checkPassword(password)) redirect("/bardo/login?error=1");
   const store = await cookies();
   store.set(SESSION_COOKIE, await createSessionToken(), {
     httpOnly: true,
@@ -36,13 +36,13 @@ export async function loginAction(formData: FormData): Promise<void> {
     path: "/",
     maxAge: 60 * 60 * 24 * 7,
   });
-  redirect("/admin");
+  redirect("/bardo");
 }
 
 export async function logoutAction(): Promise<void> {
   const store = await cookies();
   store.delete(SESSION_COOKIE);
-  redirect("/admin/login");
+  redirect("/bardo/login");
 }
 
 // --- Identité & biographie ---
@@ -61,7 +61,7 @@ export async function saveArtistAction(formData: FormData): Promise<void> {
     },
   });
   refresh();
-  redirect("/admin?ok=identite");
+  redirect("/bardo?ok=identite");
 }
 
 // --- Contact ---
@@ -77,7 +77,7 @@ export async function saveContactAction(formData: FormData): Promise<void> {
     },
   });
   refresh();
-  redirect("/admin?ok=contact");
+  redirect("/bardo?ok=contact");
 }
 
 // --- Liens (réseaux sociaux et plateformes), un par ligne : "Label | https://url" ---
@@ -101,7 +101,7 @@ export async function saveLinksAction(formData: FormData): Promise<void> {
     platforms: parseLinks(String(formData.get("platforms") ?? "")),
   });
   refresh();
-  redirect("/admin?ok=liens");
+  redirect("/bardo?ok=liens");
 }
 
 // --- Clips : ordre, ajout, suppression ---
@@ -117,7 +117,7 @@ export async function moveVideoAction(formData: FormData): Promise<void> {
     await saveConfig({ videos });
     refresh();
   }
-  redirect("/admin?ok=clips");
+  redirect("/bardo?ok=clips");
 }
 
 export async function deleteVideoAction(formData: FormData): Promise<void> {
@@ -129,7 +129,7 @@ export async function deleteVideoAction(formData: FormData): Promise<void> {
     await saveConfig({ videos });
     refresh();
   }
-  redirect("/admin?ok=clips");
+  redirect("/bardo?ok=clips");
 }
 
 function extractYouTubeId(input: string): string {
@@ -160,7 +160,7 @@ export async function addVideoAction(formData: FormData): Promise<void> {
     await saveConfig({ videos });
     refresh();
   }
-  redirect("/admin?ok=clips");
+  redirect("/bardo?ok=clips");
 }
 
 // --- Médias uploadés (photo de couverture, logo, musique de fond) ---
@@ -183,7 +183,7 @@ export async function saveMusicAction(formData: FormData): Promise<void> {
     music: { ...config.music, enabled: formData.get("enabled") === "on" },
   });
   refresh();
-  redirect("/admin?ok=musique");
+  redirect("/bardo?ok=musique");
 }
 
 // --- Thème de couleurs ---
@@ -194,7 +194,7 @@ export async function saveThemeAction(formData: FormData): Promise<void> {
   const { isThemeId } = await import("@/lib/themes");
   await saveConfig({ theme: isThemeId(theme) ? theme : "or" });
   refresh();
-  redirect("/admin?ok=theme");
+  redirect("/bardo?ok=theme");
 }
 
 // --- Annonce (nouvel album / single) ---
@@ -210,7 +210,7 @@ export async function saveAnnouncementAction(formData: FormData): Promise<void> 
     },
   });
   refresh();
-  redirect("/admin?ok=annonce");
+  redirect("/bardo?ok=annonce");
 }
 
 // --- Agenda ---
@@ -219,7 +219,7 @@ export async function toggleEventsAction(formData: FormData): Promise<void> {
   await requireAdmin();
   await saveConfig({ showEvents: formData.get("showEvents") === "on" });
   refresh();
-  redirect("/admin?ok=agenda");
+  redirect("/bardo?ok=agenda");
 }
 
 export async function upsertEventAction(formData: FormData): Promise<void> {
@@ -237,12 +237,12 @@ export async function upsertEventAction(formData: FormData): Promise<void> {
   };
   if (event.title) await upsertEvent(event);
   refresh();
-  redirect("/admin?ok=agenda");
+  redirect("/bardo?ok=agenda");
 }
 
 export async function deleteEventAction(formData: FormData): Promise<void> {
   await requireAdmin();
   await deleteEvent(String(formData.get("id") ?? ""));
   refresh();
-  redirect("/admin?ok=agenda");
+  redirect("/bardo?ok=agenda");
 }

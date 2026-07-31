@@ -19,7 +19,7 @@ import {
 } from "./actions";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Administration — Haithem Sherif" };
+export const metadata = { title: "Bardo — Haithem Sherif" };
 
 const input =
   "w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 outline-none focus:border-gold";
@@ -51,7 +51,7 @@ export default async function AdminPage({
     <main className="mx-auto max-w-4xl space-y-6 px-4 py-10">
       <header className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-2xl font-bold">
-          Administration — <span className="text-gold">{config.artist.name}</span>
+          Bardo — <span className="text-gold">{config.artist.name}</span>
         </h1>
         <div className="flex gap-2">
           <a href="/" target="_blank" className={btnGhost}>

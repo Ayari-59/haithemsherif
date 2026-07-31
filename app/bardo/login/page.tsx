@@ -1,7 +1,7 @@
 import { adminConfigured } from "@/lib/auth";
 import { loginAction } from "../actions";
 
-export const metadata = { title: "Espace admin — Haithem Sherif" };
+export const metadata = { title: "Bardo — Haithem Sherif" };
 
 export default async function LoginPage({
   searchParams,
@@ -15,13 +15,15 @@ export default async function LoginPage({
     <main className="flex min-h-svh items-center justify-center px-4">
       <div className="w-full max-w-sm rounded-2xl border border-gold/25 bg-night-soft p-8">
         <h1 className="mb-1 text-center text-2xl font-bold">
-          Espace <span className="text-gold">admin</span>
+          <span className="text-gold">Bardo</span>
         </h1>
-        <p className="mb-6 text-center text-sm text-white/60">Site de Haithem Sherif</p>
+        <p className="mb-6 text-center text-sm text-white/60">
+          Espace privé du site de Haithem Sherif
+        </p>
 
         {!configured ? (
           <p className="text-sm text-amber-300">
-            L&apos;espace admin n&apos;est pas encore activé : la variable
+            Cet espace n&apos;est pas encore activé : la variable
             d&apos;environnement <code>ADMIN_PASSWORD</code> doit être définie sur Vercel.
           </p>
         ) : (
