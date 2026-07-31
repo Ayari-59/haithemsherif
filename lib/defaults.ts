@@ -26,4 +26,5 @@ export const DEFAULT_CONFIG: SiteConfig = {
   releases,
   music: { url: "", enabled: false },
   showEvents: false,
+  announcement: { enabled: false, title: "", titleAr: "", url: "" },
 };

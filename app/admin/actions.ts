@@ -186,6 +186,22 @@ export async function saveMusicAction(formData: FormData): Promise<void> {
   redirect("/admin?ok=musique");
 }
 
+// --- Annonce (nouvel album / single) ---
+
+export async function saveAnnouncementAction(formData: FormData): Promise<void> {
+  await requireAdmin();
+  await saveConfig({
+    announcement: {
+      enabled: formData.get("enabled") === "on",
+      title: String(formData.get("title") ?? "").trim(),
+      titleAr: String(formData.get("titleAr") ?? "").trim(),
+      url: String(formData.get("url") ?? "").trim(),
+    },
+  });
+  refresh();
+  redirect("/admin?ok=annonce");
+}
+
 // --- Agenda ---
 
 export async function toggleEventsAction(formData: FormData): Promise<void> {

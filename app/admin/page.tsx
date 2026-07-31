@@ -2,6 +2,7 @@ import UploadField from "@/components/admin/UploadField";
 import { getConfig, hasDb, listEvents } from "@/lib/db";
 import {
   addVideoAction,
+  saveAnnouncementAction,
   deleteEventAction,
   deleteVideoAction,
   logoutAction,
@@ -260,6 +261,32 @@ export default async function AdminPage({
               Ajouter le clip
             </button>
           </div>
+        </form>
+      </Section>
+
+      <Section title="Annonce — nouvel album ou single">
+        <form action={saveAnnouncementAction} className="space-y-4">
+          <label className="flex items-center gap-2">
+            <input type="checkbox" name="enabled" defaultChecked={config.announcement.enabled} className="h-4 w-4 accent-[#d9a441]" />
+            <span>Afficher l&apos;annonce sur la page d&apos;accueil</span>
+          </label>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <label className="space-y-1">
+              <span className="text-sm text-white/60">Titre (français)</span>
+              <input name="title" placeholder="Nouvel album : …" defaultValue={config.announcement.title} className={input} />
+            </label>
+            <label className="space-y-1">
+              <span className="text-sm text-white/60">Titre (arabe)</span>
+              <input name="titleAr" dir="rtl" defaultValue={config.announcement.titleAr} className={input} />
+            </label>
+          </div>
+          <label className="block space-y-1">
+            <span className="text-sm text-white/60">Lien de la vidéo d&apos;annonce (YouTube…)</span>
+            <input name="url" placeholder="https://www.youtube.com/watch?v=…" defaultValue={config.announcement.url} className={input} />
+          </label>
+          <button type="submit" className={btn} disabled={!dbReady}>
+            Enregistrer
+          </button>
         </form>
       </Section>
 

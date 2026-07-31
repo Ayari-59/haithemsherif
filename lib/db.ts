@@ -53,6 +53,7 @@ export async function getConfig(): Promise<SiteConfig> {
     artist: { ...DEFAULT_CONFIG.artist, ...stored.artist },
     assets: { ...DEFAULT_CONFIG.assets, ...stored.assets },
     music: { ...DEFAULT_CONFIG.music, ...stored.music },
+    announcement: { ...DEFAULT_CONFIG.announcement, ...stored.announcement },
   };
 }
 
@@ -65,6 +66,7 @@ export async function saveConfig(patch: Partial<SiteConfig>): Promise<void> {
     artist: { ...current.artist, ...patch.artist },
     assets: { ...current.assets, ...patch.assets },
     music: { ...current.music, ...patch.music },
+    announcement: { ...current.announcement, ...patch.announcement },
   };
   await sql()`INSERT INTO site_config (id, data, updated_at)
     VALUES (1, ${JSON.stringify(next)}::jsonb, now())

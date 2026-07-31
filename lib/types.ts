@@ -49,4 +49,10 @@ export type SiteConfig = {
   releases: ReleaseItem[];
   music: { url: string; enabled: boolean };
   showEvents: boolean;
+  announcement: {
+    enabled: boolean;
+    title: string; // ex. « Nouvel album : Barcha Klam »
+    titleAr: string;
+    url: string; // lien vers la vidéo d'annonce
+  };
 };

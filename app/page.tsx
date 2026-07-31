@@ -57,7 +57,7 @@ function formatEventDate(date: string): string {
 
 export default async function Home() {
   const config = await getConfig();
-  const { artist, assets, socials, platforms, videos, releases, music } = config;
+  const { artist, assets, socials, platforms, videos, releases, music, announcement } = config;
   const featuredVideo = videos[0];
 
   const now = new Date();
@@ -127,6 +127,28 @@ export default async function Home() {
           </h1>
           <p className="mt-4 text-lg text-white/70">{artist.tagline}</p>
           <Ornament />
+          {announcement.enabled && announcement.title && (
+            <a
+              href={announcement.url || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mx-auto mt-6 inline-flex max-w-full flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-full border border-gold/60 bg-gold/10 px-5 py-2.5 backdrop-blur transition hover:bg-gold/20"
+            >
+              <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-gold" />
+              </span>
+              <span className="font-semibold text-gold-light">{announcement.title}</span>
+              {announcement.titleAr && (
+                <span dir="rtl" className="font-ar text-gold-light/90">
+                  {announcement.titleAr}
+                </span>
+              )}
+              <span className="text-sm text-white/70 transition group-hover:text-gold">
+                Voir l&apos;annonce →
+              </span>
+            </a>
+          )}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <a
               href="#musique"
