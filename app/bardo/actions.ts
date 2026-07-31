@@ -80,25 +80,20 @@ export async function saveContactAction(formData: FormData): Promise<void> {
   redirect("/bardo?ok=contact");
 }
 
-// --- Liens (réseaux sociaux et plateformes), un par ligne : "Label | https://url" ---
+// --- Liens : un champ par réseau / plateforme, champ vide = lien masqué ---
 
-function parseLinks(raw: string): LinkItem[] {
-  return raw
-    .split("\n")
-    .map((line) => line.trim())
-    .filter(Boolean)
-    .map((line) => {
-      const [label, ...rest] = line.split("|");
-      return { label: (label ?? "").trim(), url: rest.join("|").trim() };
-    })
-    .filter((l) => l.label && l.url);
+function collectLinks(formData: FormData, prefix: string, labels: string[]): LinkItem[] {
+  return labels
+    .map((label) => ({ label, url: String(formData.get(`${prefix}${label}`) ?? "").trim() }))
+    .filter((l) => l.url);
 }
 
 export async function saveLinksAction(formData: FormData): Promise<void> {
   await requireAdmin();
+  const { SOCIAL_CATALOG, PLATFORM_CATALOG } = await import("@/lib/social-catalog");
   await saveConfig({
-    socials: parseLinks(String(formData.get("socials") ?? "")),
-    platforms: parseLinks(String(formData.get("platforms") ?? "")),
+    socials: collectLinks(formData, "social_", SOCIAL_CATALOG.map((c) => c.label)),
+    platforms: collectLinks(formData, "platform_", PLATFORM_CATALOG.map((c) => c.label)),
   });
   refresh();
   redirect("/bardo?ok=liens");

@@ -1,5 +1,6 @@
 import UploadField from "@/components/admin/UploadField";
 import { getConfig, hasDb, listEvents } from "@/lib/db";
+import { PLATFORM_CATALOG, SOCIAL_CATALOG } from "@/lib/social-catalog";
 import { THEMES } from "@/lib/themes";
 import {
   addVideoAction,
@@ -173,29 +174,45 @@ export default async function AdminPage({
       </Section>
 
       <Section title="Réseaux sociaux & plateformes d'écoute">
-        <form action={saveLinksAction} className="space-y-4">
-          <label className="block space-y-1">
-            <span className="text-sm text-white/60">
-              Réseaux sociaux — un par ligne, au format <code>Label | https://lien</code>
-            </span>
-            <textarea
-              name="socials"
-              rows={5}
-              defaultValue={config.socials.map((s) => `${s.label} | ${s.url}`).join("\n")}
-              className={`${input} font-mono text-sm`}
-            />
-          </label>
-          <label className="block space-y-1">
-            <span className="text-sm text-white/60">
-              Plateformes d&apos;écoute — même format
-            </span>
-            <textarea
-              name="platforms"
-              rows={5}
-              defaultValue={config.platforms.map((p) => `${p.label} | ${p.url}`).join("\n")}
-              className={`${input} font-mono text-sm`}
-            />
-          </label>
+        <form action={saveLinksAction} className="space-y-6">
+          <p className="text-sm text-white/60">
+            Colle le lien de chaque réseau. Un champ laissé vide = le réseau
+            n&apos;apparaît pas sur le site.
+          </p>
+          <div>
+            <h3 className="mb-3 font-semibold text-gold-light">Réseaux sociaux</h3>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {SOCIAL_CATALOG.map((c) => (
+                <label key={c.label} className="space-y-1">
+                  <span className="text-sm text-white/60">{c.label}</span>
+                  <input
+                    name={`social_${c.label}`}
+                    type="url"
+                    placeholder={c.placeholder}
+                    defaultValue={config.socials.find((s) => s.label === c.label)?.url ?? ""}
+                    className={input}
+                  />
+                </label>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 className="mb-3 font-semibold text-gold-light">Plateformes d&apos;écoute</h3>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {PLATFORM_CATALOG.map((c) => (
+                <label key={c.label} className="space-y-1">
+                  <span className="text-sm text-white/60">{c.label}</span>
+                  <input
+                    name={`platform_${c.label}`}
+                    type="url"
+                    placeholder={c.placeholder}
+                    defaultValue={config.platforms.find((p) => p.label === c.label)?.url ?? ""}
+                    className={input}
+                  />
+                </label>
+              ))}
+            </div>
+          </div>
           <button type="submit" className={btn} disabled={!dbReady}>
             Enregistrer
           </button>
