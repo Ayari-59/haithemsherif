@@ -117,7 +117,7 @@ export default async function Home() {
             src={assets.logo}
             alt=""
             aria-hidden="true"
-            className="mx-auto mb-6 h-28 w-auto drop-shadow-[0_0_24px_rgba(217,164,65,0.35)] sm:h-36"
+            className="glow-logo mx-auto mb-6 h-28 w-auto sm:h-36"
           />
           <p dir="rtl" className="font-ar mb-2 text-3xl text-gold-light sm:text-4xl">
             {artist.nameAr}
@@ -210,7 +210,7 @@ export default async function Home() {
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             {releases.map((r) => (
               <div key={r.title} className="group text-center">
-                <div className="arch overflow-hidden border border-gold/30 shadow-[0_0_30px_rgba(217,164,65,0.08)]">
+                <div className="arch glow-arch overflow-hidden border border-gold/30">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={r.cover}

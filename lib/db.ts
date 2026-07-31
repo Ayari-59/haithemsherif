@@ -1,4 +1,5 @@
 import { neon } from "@neondatabase/serverless";
+import { cache } from "react";
 import { DEFAULT_CONFIG } from "./defaults";
 import type { EventItem, SiteConfig } from "./types";
 
@@ -41,7 +42,8 @@ function ensureSchema(): Promise<void> {
   return schemaReady;
 }
 
-export async function getConfig(): Promise<SiteConfig> {
+// cache() déduplique les lectures au sein d'une même requête (layout + page).
+export const getConfig = cache(async (): Promise<SiteConfig> => {
   if (!hasDb()) return DEFAULT_CONFIG;
   await ensureSchema();
   const rows = await sql()`SELECT data FROM site_config WHERE id = 1`;
@@ -55,7 +57,7 @@ export async function getConfig(): Promise<SiteConfig> {
     music: { ...DEFAULT_CONFIG.music, ...stored.music },
     announcement: { ...DEFAULT_CONFIG.announcement, ...stored.announcement },
   };
-}
+});
 
 export async function saveConfig(patch: Partial<SiteConfig>): Promise<void> {
   if (!hasDb()) throw new Error("Base de données non configurée (DATABASE_URL absente).");

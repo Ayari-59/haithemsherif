@@ -186,6 +186,17 @@ export async function saveMusicAction(formData: FormData): Promise<void> {
   redirect("/admin?ok=musique");
 }
 
+// --- Thème de couleurs ---
+
+export async function saveThemeAction(formData: FormData): Promise<void> {
+  await requireAdmin();
+  const theme = String(formData.get("theme") ?? "or");
+  const { isThemeId } = await import("@/lib/themes");
+  await saveConfig({ theme: isThemeId(theme) ? theme : "or" });
+  refresh();
+  redirect("/admin?ok=theme");
+}
+
 // --- Annonce (nouvel album / single) ---
 
 export async function saveAnnouncementAction(formData: FormData): Promise<void> {

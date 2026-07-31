@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Amiri, Cairo } from "next/font/google";
+import { getConfig } from "@/lib/db";
 import "./globals.css";
 
 const cairo = Cairo({
@@ -25,11 +26,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const { theme } = await getConfig();
   return (
-    <html lang="fr">
+    <html lang="fr" data-theme={theme}>
       <body className={`${cairo.variable} ${amiri.variable} font-[family-name:var(--font-cairo)] antialiased`}>
         {children}
       </body>

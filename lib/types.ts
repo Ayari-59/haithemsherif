@@ -49,6 +49,7 @@ export type SiteConfig = {
   releases: ReleaseItem[];
   music: { url: string; enabled: boolean };
   showEvents: boolean;
+  theme: string; // identifiant du jeu de couleurs (voir lib/themes.ts)
   announcement: {
     enabled: boolean;
     title: string; // ex. « Nouvel album : Barcha Klam »

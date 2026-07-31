@@ -1,5 +1,6 @@
 import UploadField from "@/components/admin/UploadField";
 import { getConfig, hasDb, listEvents } from "@/lib/db";
+import { THEMES } from "@/lib/themes";
 import {
   addVideoAction,
   saveAnnouncementAction,
@@ -11,6 +12,7 @@ import {
   saveContactAction,
   saveLinksAction,
   saveMusicAction,
+  saveThemeAction,
   saveUploadedAssetAction,
   toggleEventsAction,
   upsertEventAction,
@@ -261,6 +263,41 @@ export default async function AdminPage({
               Ajouter le clip
             </button>
           </div>
+        </form>
+      </Section>
+
+      <Section title="Thème de couleurs">
+        <form action={saveThemeAction} className="space-y-4">
+          <div className="grid gap-3 sm:grid-cols-2">
+            {THEMES.map((t) => (
+              <label
+                key={t.id}
+                className="flex cursor-pointer items-center gap-3 rounded-lg border border-white/15 bg-white/5 px-4 py-3 transition hover:border-gold/60"
+              >
+                <input
+                  type="radio"
+                  name="theme"
+                  value={t.id}
+                  defaultChecked={config.theme === t.id}
+                  className="h-4 w-4 accent-[#d9a441]"
+                />
+                <span className="flex items-center gap-1.5" aria-hidden="true">
+                  <span
+                    className="inline-block h-6 w-6 rounded-full border border-white/25"
+                    style={{ backgroundColor: t.bg }}
+                  />
+                  <span
+                    className="inline-block h-6 w-6 rounded-full border border-white/25"
+                    style={{ backgroundColor: t.accent }}
+                  />
+                </span>
+                <span>{t.label}</span>
+              </label>
+            ))}
+          </div>
+          <button type="submit" className={btn} disabled={!dbReady}>
+            Enregistrer
+          </button>
         </form>
       </Section>
 
